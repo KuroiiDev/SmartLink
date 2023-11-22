@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
  * @author USER
  */
 public class LoginForm extends javax.swing.JFrame {
+    
     /**
      * Creates new form LoginForm
      */
@@ -184,7 +185,7 @@ public class LoginForm extends javax.swing.JFrame {
             ResultSet rs = stm.executeQuery(sql);
             
             if (rs.next()){
-                HomeForm home = new HomeForm();
+                HomeForm home = new HomeForm(rs.getString(2), rs.getInt(1));
                 home.setVisible(true);
                 close();
             }else{
@@ -192,6 +193,7 @@ public class LoginForm extends javax.swing.JFrame {
                 logPassText.setText("");
             }
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Database Error!!", "Warning", JOptionPane.WARNING_MESSAGE);
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_btnLogActionPerformed

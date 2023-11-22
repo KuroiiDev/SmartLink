@@ -4,17 +4,35 @@
  */
 package main;
 
+import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author USER
  */
 public class HomeForm extends javax.swing.JFrame {
-
+    boolean fufu = true;
+    int idUser;
+    String adminText = "";
+    String userName;
     /**
      * Creates new form HomeForm
      */
-    public HomeForm() {
-        initComponents();
+    public HomeForm(String user, int id) {
+       initComponents();
+       getColor();
+       labelUser.setText("Selamat Datang "+user+"!");
+       idUser = id;
+       userName = user;
+       if (userName.equals("admin")){
+           adminText = " Sebagai Admin";
+       }
     }
 
     /**
@@ -26,35 +44,437 @@ public class HomeForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        btnRef = new javax.swing.JButton();
+        labelUser = new javax.swing.JLabel();
+        btnOut = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        jButton1.setBackground(new java.awt.Color(51, 255, 51));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/pc.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setFocusPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setBackground(new java.awt.Color(51, 255, 51));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/pc.png"))); // NOI18N
+        jButton2.setBorder(null);
+        jButton2.setFocusPainted(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setBackground(new java.awt.Color(51, 255, 51));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/pc.png"))); // NOI18N
+        jButton3.setBorder(null);
+        jButton3.setFocusPainted(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setBackground(new java.awt.Color(51, 255, 51));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/pc.png"))); // NOI18N
+        jButton4.setBorder(null);
+        jButton4.setFocusPainted(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setBackground(new java.awt.Color(51, 255, 51));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/pc.png"))); // NOI18N
+        jButton5.setBorder(null);
+        jButton5.setFocusPainted(false);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setBackground(new java.awt.Color(51, 255, 51));
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/pc.png"))); // NOI18N
+        jButton6.setBorder(null);
+        jButton6.setFocusPainted(false);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setBackground(new java.awt.Color(51, 255, 51));
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/pc.png"))); // NOI18N
+        jButton7.setBorder(null);
+        jButton7.setFocusPainted(false);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton8.setBackground(new java.awt.Color(51, 255, 51));
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/pc.png"))); // NOI18N
+        jButton8.setBorder(null);
+        jButton8.setFocusPainted(false);
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        btnRef.setText("Refresh");
+        btnRef.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefActionPerformed(evt);
+            }
+        });
+
+        labelUser.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        labelUser.setText("Selamat Datang User!");
+
+        btnOut.setBackground(new java.awt.Color(255, 153, 153));
+        btnOut.setText("Logout");
+        btnOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOutActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(36, 36, 36))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnRef)
+                        .addContainerGap())
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(labelUser)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnOut)
+                        .addContainerGap())))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(labelUser))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnOut)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(btnRef)
+                .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1060, 620));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 1130, 630));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/bg_1.jpg"))); // NOI18N
-        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-280, -180, 3580, 2420));
+        jLabel1.setMaximumSize(new java.awt.Dimension(1274, 719));
+        jLabel1.setMinimumSize(new java.awt.Dimension(1274, 719));
+        jLabel1.setPreferredSize(new java.awt.Dimension(1274, 719));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int id = 1;
+        if (setColor(id)) {
+            jButton1.setBackground(new java.awt.Color(51, 255, 51));
+            setColorN(id, "n");
+            getColor();
+        }else{
+            jButton1.setBackground(new java.awt.Color(255, 51, 51));
+            if (checkId(id)){
+                setColorN(id, "y");
+                getColor();
+            }else{
+                JOptionPane.showMessageDialog(this, "Komputer 1 Sedang dipakai!", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+setColor(1);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int id = 2;
+        if (setColor(id)) {
+            jButton2.setBackground(new java.awt.Color(51, 255, 51));
+            setColorN(id, "n");
+            getColor();
+        }else{
+            jButton2.setBackground(new java.awt.Color(255, 51, 51));
+            JOptionPane.showMessageDialog(this, "Komputer 2 Sedang dipakai!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int id = 3;
+        if (setColor(id)) {
+            jButton3.setBackground(new java.awt.Color(51, 255, 51));
+            setColorN(id, "n");
+            getColor();
+        }else{
+            jButton3.setBackground(new java.awt.Color(255, 51, 51));
+            JOptionPane.showMessageDialog(this, "Komputer 3 Sedang dipakai!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        int id = 4;
+        if (setColor(id)) {
+            jButton4.setBackground(new java.awt.Color(51, 255, 51));
+            setColorN(id, "n");
+            getColor();
+        }else{
+            jButton4.setBackground(new java.awt.Color(255, 51, 51));
+            JOptionPane.showMessageDialog(this, "Komputer 4 Sedang dipakai!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        int id = 5;
+        if (setColor(id)) {
+            jButton5.setBackground(new java.awt.Color(51, 255, 51));
+            setColorN(id, "n");
+            getColor();
+        }else{
+            jButton5.setBackground(new java.awt.Color(255, 51, 51));
+            JOptionPane.showMessageDialog(this, "Komputer 5 Sedang dipakai!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        int id = 6;
+        if (setColor(id)) {
+            jButton6.setBackground(new java.awt.Color(51, 255, 51));
+            setColorN(id, "n");
+            getColor();
+        }else{
+            jButton6.setBackground(new java.awt.Color(255, 51, 51));
+            JOptionPane.showMessageDialog(this, "Komputer 6 Sedang dipakai!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        int id = 7;
+        if (setColor(id)) {
+            jButton7.setBackground(new java.awt.Color(51, 255, 51));
+            setColorN(id, "n");
+            getColor();
+        }else{
+            jButton7.setBackground(new java.awt.Color(255, 51, 51));
+            JOptionPane.showMessageDialog(this, "Komputer 7 Sedang dipakai!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        int id = 8;
+        if (setColor(id)) {
+            jButton8.setBackground(new java.awt.Color(51, 255, 51));
+            setColorN(id, "n");
+            getColor();
+        }else{
+            jButton8.setBackground(new java.awt.Color(255, 51, 51));
+            JOptionPane.showMessageDialog(this, "Komputer 8 Sedang dipakai!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void btnRefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefActionPerformed
+        getColor();
+    }//GEN-LAST:event_btnRefActionPerformed
+
+    private void btnOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOutActionPerformed
+        int reply = JOptionPane.showConfirmDialog(null,
+                    "Anda Yakin Ingin LogOut?",
+                    "Konfirmasi", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION){
+            LoginForm log = new LoginForm("");
+            log.setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_btnOutActionPerformed
+    private boolean setColor(int id){
+         try {
+            Connection conn = (Connection)conf.configDB();
+            String sql = "SELECT * FROM computer WHERE id='"+id+"'";
+            
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            
+             if (rs.next()) {
+//                System.out.println(rs.getInt(1));
+//                System.out.println(rs.getInt(2));
+//                System.out.println(rs.getString(3));
+                 if (rs.getString(3).equals("n")) {
+                     return false;
+                 }else{
+                     return true;
+                 }
+             }else{
+                 return true;
+             }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Database Error!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            System.out.println(e.getMessage());
+            return true;
+        }
+    }
+    private void setColorN(int id, String stat){
+        try {
+            Connection conn = (Connection)conf.configDB();
+            String sql = "UPDATE computer SET available=?, user=? WHERE id=?";
+            if (stat.equals("y")) {
+                int reply = JOptionPane.showConfirmDialog(null,
+                    "Anda Yakin Ingin Menonaktifkan Sesi Komputer Ini"+adminText+"?",
+                    "Konfirmasi", JOptionPane.YES_NO_OPTION);
+                if (reply == JOptionPane.YES_OPTION){
+                    PreparedStatement ps = conn.prepareStatement(sql);
+                    ps.setString(1,stat);
+                    ps.setInt(2,idUser);
+                    ps.setInt(3,id);
+                    ps.executeUpdate();
+                }
+            }else{
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ps.setString(1,stat);
+                ps.setInt(2,idUser);
+                ps.setInt(3,id);
+                ps.executeUpdate();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Database Error!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            System.out.println(e.getMessage());
+        }
+    }
+    private boolean checkId(int id){
+        try {
+            Connection conn = (Connection)conf.configDB();
+            String sql = "SELECT * FROM computer WHERE id='"+id+"'";
+            
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            if (rs.next()){
+                if ((rs.getInt(2) == idUser) || userName.equals("admin")){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Database Error!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    private void getColor(){
+        try {
+            Connection conn = (Connection)conf.configDB();
+            String sql = "SELECT * FROM computer";
+            
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            String[] ava = new String[8];
+            int i = 0;
+            while (rs.next()){
+                ava[(rs.getInt(1)-1)] = rs.getString(3);
+                System.out.println(i + " Status: "+ ava[i]);
+                i++;
+            }
+            if (ava[0].equalsIgnoreCase("n")){
+                jButton1.setBackground(new java.awt.Color(255, 51, 51));
+            }else{jButton1.setBackground(new java.awt.Color(51, 255, 51));}
+            if (ava[1].equals("n")){
+                jButton2.setBackground(new java.awt.Color(255, 51, 51));
+            }else{jButton2.setBackground(new java.awt.Color(51, 255, 51));}
+            if (ava[2].equals("n")){
+                jButton3.setBackground(new java.awt.Color(255, 51, 51));
+            }else{jButton3.setBackground(new java.awt.Color(51, 255, 51));}
+            if (ava[3].equals("n")){
+                jButton4.setBackground(new java.awt.Color(255, 51, 51));
+            }else{jButton4.setBackground(new java.awt.Color(51, 255, 51));}
+            if (ava[4].equals("n")){
+                jButton5.setBackground(new java.awt.Color(255, 51, 51));
+            }else{jButton5.setBackground(new java.awt.Color(51, 255, 51));}
+            if (ava[5].equals("n")){
+                jButton6.setBackground(new java.awt.Color(255, 51, 51));
+            }else{jButton6.setBackground(new java.awt.Color(51, 255, 51));}
+            if (ava[6].equals("n")){
+                jButton7.setBackground(new java.awt.Color(255, 51, 51));
+            }else{jButton7.setBackground(new java.awt.Color(51, 255, 51));}
+            if (ava[7].equals("n")){
+                jButton8.setBackground(new java.awt.Color(255, 51, 51));
+            }else{jButton8.setBackground(new java.awt.Color(51, 255, 51));}
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Database Error!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            System.out.println(e.getMessage());
+        }
+    }
+    private void close(){
+        WindowEvent closeWin = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+        getToolkit().getDefaultToolkit().getSystemEventQueue().postEvent(closeWin);
+    }
     /**
      * @param args the command line arguments
      */
@@ -85,13 +505,24 @@ public class HomeForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomeForm().setVisible(true);
+                new HomeForm("User", 0).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnOut;
+    private javax.swing.JButton btnRef;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel labelUser;
     // End of variables declaration//GEN-END:variables
 }

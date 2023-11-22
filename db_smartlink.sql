@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Nov 2023 pada 05.50
--- Versi server: 10.4.18-MariaDB
--- Versi PHP: 7.3.28
+-- Generation Time: Nov 22, 2023 at 01:22 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,42 +24,80 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `account`
+-- Table structure for table `account`
 --
 
 CREATE TABLE `account` (
   `id` int(11) NOT NULL,
   `username` varchar(25) NOT NULL,
   `password` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `account`
+-- Dumping data for table `account`
 --
 
 INSERT INTO `account` (`id`, `username`, `password`) VALUES
 (1, 'admin', 'admin'),
-(3, 'andika', 'and');
+(2, 'kuroii', 'admin123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `computer`
+--
+
+CREATE TABLE `computer` (
+  `id` int(11) NOT NULL,
+  `user` int(11) NOT NULL,
+  `available` enum('y','n') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `computer`
+--
+
+INSERT INTO `computer` (`id`, `user`, `available`) VALUES
+(1, 1, 'y'),
+(2, 0, 'y'),
+(3, 0, 'y'),
+(4, 0, 'y'),
+(5, 0, 'y'),
+(6, 0, 'y'),
+(7, 0, 'y'),
+(8, 0, 'y');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `account`
+-- Indexes for table `account`
 --
 ALTER TABLE `account`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- Indexes for table `computer`
+--
+ALTER TABLE `computer`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `account`
+-- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `computer`
+--
+ALTER TABLE `computer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
