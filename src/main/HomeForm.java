@@ -17,22 +17,24 @@ import javax.swing.JOptionPane;
  * @author USER
  */
 public class HomeForm extends javax.swing.JFrame {
+
     boolean fufu = true;
     int idUser;
     String adminText = "";
     String userName;
+
     /**
      * Creates new form HomeForm
      */
     public HomeForm(String user, int id) {
-       initComponents();
-       getColor();
-       labelUser.setText("Selamat Datang "+user+"!");
-       idUser = id;
-       userName = user;
-       if (userName.equals("admin")){
-           adminText = " Sebagai Admin";
-       }
+        initComponents();
+        getColor();
+        labelUser.setText("Selamat Datang " + user + "!");
+        idUser = id;
+        userName = user;
+        if (userName.equals("admin")) {
+            adminText = " Sebagai Admin";
+        }
     }
 
     /**
@@ -56,9 +58,11 @@ public class HomeForm extends javax.swing.JFrame {
         btnRef = new javax.swing.JButton();
         labelUser = new javax.swing.JLabel();
         btnOut = new javax.swing.JButton();
+        btnHis = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1274, 719));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -163,6 +167,13 @@ public class HomeForm extends javax.swing.JFrame {
             }
         });
 
+        btnHis.setText("History");
+        btnHis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHisActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -190,6 +201,8 @@ public class HomeForm extends javax.swing.JFrame {
                                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(36, 36, 36))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnHis)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnRef)
                         .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -221,7 +234,9 @@ public class HomeForm extends javax.swing.JFrame {
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(btnRef)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRef)
+                    .addComponent(btnHis))
                 .addContainerGap())
         );
 
@@ -232,6 +247,7 @@ public class HomeForm extends javax.swing.JFrame {
         jLabel1.setMaximumSize(new java.awt.Dimension(1274, 719));
         jLabel1.setMinimumSize(new java.awt.Dimension(1274, 719));
         jLabel1.setPreferredSize(new java.awt.Dimension(1274, 719));
+        jLabel1.setRequestFocusEnabled(false);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -243,16 +259,16 @@ public class HomeForm extends javax.swing.JFrame {
             jButton1.setBackground(new java.awt.Color(51, 255, 51));
             setColorN(id, "n");
             getColor();
-        }else{
+        } else {
             jButton1.setBackground(new java.awt.Color(255, 51, 51));
-            if (checkId(id)){
+            if (checkId(id)) {
                 setColorN(id, "y");
                 getColor();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "Komputer 1 Sedang dipakai!", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         }
-setColor(1);
+        setColor(1);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -261,7 +277,7 @@ setColor(1);
             jButton2.setBackground(new java.awt.Color(51, 255, 51));
             setColorN(id, "n");
             getColor();
-        }else{
+        } else {
             jButton2.setBackground(new java.awt.Color(255, 51, 51));
             JOptionPane.showMessageDialog(this, "Komputer 2 Sedang dipakai!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
@@ -273,7 +289,7 @@ setColor(1);
             jButton3.setBackground(new java.awt.Color(51, 255, 51));
             setColorN(id, "n");
             getColor();
-        }else{
+        } else {
             jButton3.setBackground(new java.awt.Color(255, 51, 51));
             JOptionPane.showMessageDialog(this, "Komputer 3 Sedang dipakai!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
@@ -285,7 +301,7 @@ setColor(1);
             jButton4.setBackground(new java.awt.Color(51, 255, 51));
             setColorN(id, "n");
             getColor();
-        }else{
+        } else {
             jButton4.setBackground(new java.awt.Color(255, 51, 51));
             JOptionPane.showMessageDialog(this, "Komputer 4 Sedang dipakai!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
@@ -297,7 +313,7 @@ setColor(1);
             jButton5.setBackground(new java.awt.Color(51, 255, 51));
             setColorN(id, "n");
             getColor();
-        }else{
+        } else {
             jButton5.setBackground(new java.awt.Color(255, 51, 51));
             JOptionPane.showMessageDialog(this, "Komputer 5 Sedang dipakai!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
@@ -309,7 +325,7 @@ setColor(1);
             jButton6.setBackground(new java.awt.Color(51, 255, 51));
             setColorN(id, "n");
             getColor();
-        }else{
+        } else {
             jButton6.setBackground(new java.awt.Color(255, 51, 51));
             JOptionPane.showMessageDialog(this, "Komputer 6 Sedang dipakai!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
@@ -321,7 +337,7 @@ setColor(1);
             jButton7.setBackground(new java.awt.Color(51, 255, 51));
             setColorN(id, "n");
             getColor();
-        }else{
+        } else {
             jButton7.setBackground(new java.awt.Color(255, 51, 51));
             JOptionPane.showMessageDialog(this, "Komputer 7 Sedang dipakai!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
@@ -333,7 +349,7 @@ setColor(1);
             jButton8.setBackground(new java.awt.Color(51, 255, 51));
             setColorN(id, "n");
             getColor();
-        }else{
+        } else {
             jButton8.setBackground(new java.awt.Color(255, 51, 51));
             JOptionPane.showMessageDialog(this, "Komputer 8 Sedang dipakai!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
@@ -345,136 +361,178 @@ setColor(1);
 
     private void btnOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOutActionPerformed
         int reply = JOptionPane.showConfirmDialog(null,
-                    "Anda Yakin Ingin LogOut?",
-                    "Konfirmasi", JOptionPane.YES_NO_OPTION);
-        if (reply == JOptionPane.YES_OPTION){
+                "Anda Yakin Ingin LogOut?",
+                "Konfirmasi", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
             LoginForm log = new LoginForm("");
             log.setVisible(true);
-            dispose();
+            close();
         }
     }//GEN-LAST:event_btnOutActionPerformed
-    private boolean setColor(int id){
-         try {
-            Connection conn = (Connection)conf.configDB();
-            String sql = "SELECT * FROM computer WHERE id='"+id+"'";
-            
+
+    private void btnHisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHisActionPerformed
+    private boolean setColor(int id) {
+        try {
+            Connection conn = (Connection) conf.configDB();
+            String sql = "SELECT * FROM computer WHERE id='" + id + "'";
+
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery(sql);
-            
-             if (rs.next()) {
+
+            if (rs.next()) {
 //                System.out.println(rs.getInt(1));
 //                System.out.println(rs.getInt(2));
 //                System.out.println(rs.getString(3));
-                 if (rs.getString(3).equals("n")) {
-                     return false;
-                 }else{
-                     return true;
-                 }
-             }else{
-                 return true;
-             }
+                if (rs.getString(3).equals("n")) {
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                return true;
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Database Error!!", "Warning", JOptionPane.WARNING_MESSAGE);
             System.out.println(e.getMessage());
             return true;
         }
     }
-    private void setColorN(int id, String stat){
+
+    private void setColorN(int id, String stat) {
         try {
-            Connection conn = (Connection)conf.configDB();
+            Connection conn = (Connection) conf.configDB();
             String sql = "UPDATE computer SET available=?, user=? WHERE id=?";
             if (stat.equals("y")) {
                 int reply = JOptionPane.showConfirmDialog(null,
-                    "Anda Yakin Ingin Menonaktifkan Sesi Komputer Ini"+adminText+"?",
-                    "Konfirmasi", JOptionPane.YES_NO_OPTION);
-                if (reply == JOptionPane.YES_OPTION){
+                        "Anda Yakin Ingin Menonaktifkan Sesi Komputer Ini" + adminText + "?",
+                        "Konfirmasi", JOptionPane.YES_NO_OPTION);
+                if (reply == JOptionPane.YES_OPTION) {
                     PreparedStatement ps = conn.prepareStatement(sql);
-                    ps.setString(1,stat);
-                    ps.setInt(2,idUser);
-                    ps.setInt(3,id);
+                    ps.setString(1, stat);
+                    ps.setInt(2, idUser);
+                    ps.setInt(3, id);
                     ps.executeUpdate();
                 }
-            }else{
+            } else {
                 PreparedStatement ps = conn.prepareStatement(sql);
-                ps.setString(1,stat);
-                ps.setInt(2,idUser);
-                ps.setInt(3,id);
+                ps.setString(1, stat);
+                ps.setInt(2, idUser);
+                ps.setInt(3, id);
                 ps.executeUpdate();
+                inHistory(id);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Database Error!!", "Warning", JOptionPane.WARNING_MESSAGE);
             System.out.println(e.getMessage());
         }
     }
-    private boolean checkId(int id){
+
+    private boolean checkId(int id) {
         try {
-            Connection conn = (Connection)conf.configDB();
-            String sql = "SELECT * FROM computer WHERE id='"+id+"'";
-            
+            Connection conn = (Connection) conf.configDB();
+            String sql = "SELECT * FROM computer WHERE id='" + id + "'";
+
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery(sql);
-            if (rs.next()){
-                if ((rs.getInt(2) == idUser) || userName.equals("admin")){
+            if (rs.next()) {
+                if ((rs.getInt(2) == idUser) || userName.equals("admin")) {
                     return true;
-                }else{
+                } else {
                     return false;
                 }
-            }else{
+            } else {
                 return false;
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Database Error!!", "Warning", JOptionPane.WARNING_MESSAGE);
             System.out.println(e.getMessage());
             return false;
         }
     }
-    private void getColor(){
+
+    private void getColor() {
         try {
-            Connection conn = (Connection)conf.configDB();
+            Connection conn = (Connection) conf.configDB();
             String sql = "SELECT * FROM computer";
-            
+
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery(sql);
             String[] ava = new String[8];
             int i = 0;
-            while (rs.next()){
-                ava[(rs.getInt(1)-1)] = rs.getString(3);
-                System.out.println(i + " Status: "+ ava[i]);
+            while (rs.next()) {
+                ava[(rs.getInt(1) - 1)] = rs.getString(3);
+                System.out.println(i + " Status: " + ava[i]);
                 i++;
             }
-            if (ava[0].equalsIgnoreCase("n")){
+            if (ava[0].equalsIgnoreCase("n")) {
                 jButton1.setBackground(new java.awt.Color(255, 51, 51));
-            }else{jButton1.setBackground(new java.awt.Color(51, 255, 51));}
-            if (ava[1].equals("n")){
+            } else {
+                jButton1.setBackground(new java.awt.Color(51, 255, 51));
+            }
+            if (ava[1].equals("n")) {
                 jButton2.setBackground(new java.awt.Color(255, 51, 51));
-            }else{jButton2.setBackground(new java.awt.Color(51, 255, 51));}
-            if (ava[2].equals("n")){
+            } else {
+                jButton2.setBackground(new java.awt.Color(51, 255, 51));
+            }
+            if (ava[2].equals("n")) {
                 jButton3.setBackground(new java.awt.Color(255, 51, 51));
-            }else{jButton3.setBackground(new java.awt.Color(51, 255, 51));}
-            if (ava[3].equals("n")){
+            } else {
+                jButton3.setBackground(new java.awt.Color(51, 255, 51));
+            }
+            if (ava[3].equals("n")) {
                 jButton4.setBackground(new java.awt.Color(255, 51, 51));
-            }else{jButton4.setBackground(new java.awt.Color(51, 255, 51));}
-            if (ava[4].equals("n")){
+            } else {
+                jButton4.setBackground(new java.awt.Color(51, 255, 51));
+            }
+            if (ava[4].equals("n")) {
                 jButton5.setBackground(new java.awt.Color(255, 51, 51));
-            }else{jButton5.setBackground(new java.awt.Color(51, 255, 51));}
-            if (ava[5].equals("n")){
+            } else {
+                jButton5.setBackground(new java.awt.Color(51, 255, 51));
+            }
+            if (ava[5].equals("n")) {
                 jButton6.setBackground(new java.awt.Color(255, 51, 51));
-            }else{jButton6.setBackground(new java.awt.Color(51, 255, 51));}
-            if (ava[6].equals("n")){
+            } else {
+                jButton6.setBackground(new java.awt.Color(51, 255, 51));
+            }
+            if (ava[6].equals("n")) {
                 jButton7.setBackground(new java.awt.Color(255, 51, 51));
-            }else{jButton7.setBackground(new java.awt.Color(51, 255, 51));}
-            if (ava[7].equals("n")){
+            } else {
+                jButton7.setBackground(new java.awt.Color(51, 255, 51));
+            }
+            if (ava[7].equals("n")) {
                 jButton8.setBackground(new java.awt.Color(255, 51, 51));
-            }else{jButton8.setBackground(new java.awt.Color(51, 255, 51));}
+            } else {
+                jButton8.setBackground(new java.awt.Color(51, 255, 51));
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Database Error!!", "Warning", JOptionPane.WARNING_MESSAGE);
             System.out.println(e.getMessage());
         }
     }
-    private void close(){
+
+    private void inHistory(int com_id) {
+        try {
+            Connection conn = (Connection) conf.configDB();
+            String sql = "INSERT INTO history (client_id, client_name, com_id) VALUES (?,?,?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, idUser);
+            ps.setString(2, userName);
+            ps.setInt(3, com_id);
+            ps.executeUpdate();
+            ps.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Terjadi Masalah!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void close() {
         WindowEvent closeWin = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         getToolkit().getDefaultToolkit().getSystemEventQueue().postEvent(closeWin);
     }
+
     /**
      * @param args the command line arguments
      */
@@ -511,6 +569,7 @@ setColor(1);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHis;
     private javax.swing.JButton btnOut;
     private javax.swing.JButton btnRef;
     private javax.swing.JButton jButton1;

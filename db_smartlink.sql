@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2023 at 01:22 PM
+-- Generation Time: Nov 22, 2023 at 05:01 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -58,7 +58,7 @@ CREATE TABLE `computer` (
 --
 
 INSERT INTO `computer` (`id`, `user`, `available`) VALUES
-(1, 1, 'y'),
+(1, 2, 'n'),
 (2, 0, 'y'),
 (3, 0, 'y'),
 (4, 0, 'y'),
@@ -66,6 +66,27 @@ INSERT INTO `computer` (`id`, `user`, `available`) VALUES
 (6, 0, 'y'),
 (7, 0, 'y'),
 (8, 0, 'y');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `history`
+--
+
+CREATE TABLE `history` (
+  `id` int(11) NOT NULL,
+  `client_id` int(11) NOT NULL,
+  `client_name` varchar(25) NOT NULL,
+  `com_id` int(11) NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `history`
+--
+
+INSERT INTO `history` (`id`, `client_id`, `client_name`, `com_id`, `date`) VALUES
+(1, 2, 'kuroii', 1, '2023-11-22');
 
 --
 -- Indexes for dumped tables
@@ -84,6 +105,12 @@ ALTER TABLE `computer`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `history`
+--
+ALTER TABLE `history`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -98,6 +125,12 @@ ALTER TABLE `account`
 --
 ALTER TABLE `computer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `history`
+--
+ALTER TABLE `history`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
