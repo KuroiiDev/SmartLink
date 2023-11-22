@@ -4,7 +4,15 @@
  */
 package main;
 
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
+import java.awt.HeadlessException;
+import java.sql.SQLException;
+import java.sql.DriverManager;
 import java.awt.event.WindowEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,8 +41,10 @@ public class RegisterForm extends javax.swing.JFrame {
         sigUserText = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         sigPassText = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        btnReg = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        sigPassText1 = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -54,24 +64,35 @@ public class RegisterForm extends javax.swing.JFrame {
 
         sigUserText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         sigUserText.setBorder(null);
+        sigUserText.setNextFocusableComponent(sigPassText);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
         jLabel4.setText("Password");
 
         sigPassText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         sigPassText.setBorder(null);
+        sigPassText.setNextFocusableComponent(sigPassText1);
+        sigPassText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                sigPassTextKeyTyped(evt);
+            }
+        });
 
-        jButton1.setBackground(new java.awt.Color(0, 255, 51));
-        jButton1.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
-        jButton1.setText("Login!");
-        jButton1.setBorderPainted(false);
-        jButton1.setFocusPainted(false);
+        btnReg.setBackground(new java.awt.Color(0, 255, 51));
+        btnReg.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
+        btnReg.setText("Register!");
+        btnReg.setBorderPainted(false);
+        btnReg.setFocusPainted(false);
+        btnReg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(0,0,0, 50));
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(153, 255, 255));
         jButton3.setText("Sudah Memiliki Akun? Klik Untuk Login");
-        jButton3.setActionCommand("Sudah Memiliki Akun? Klik Untuk Login");
         jButton3.setBorder(null);
         jButton3.setFocusPainted(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -80,10 +101,26 @@ public class RegisterForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
+        jLabel7.setText("Confirm Password");
+
+        sigPassText1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        sigPassText1.setBorder(null);
+        sigPassText1.setNextFocusableComponent(sigUserText);
+        sigPassText1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                sigPassText1KeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(104, 104, 104)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -99,20 +136,23 @@ public class RegisterForm extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(170, 170, 170)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 166, Short.MAX_VALUE)))
+                        .addComponent(btnReg, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 166, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(sigPassText1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addGap(60, 60, 60)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sigUserText, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -120,8 +160,12 @@ public class RegisterForm extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sigPassText, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sigPassText1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addComponent(btnReg, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
                 .addGap(73, 73, 73))
@@ -147,13 +191,80 @@ public class RegisterForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        LoginForm log = new LoginForm();
+        LoginForm log = new LoginForm("");
         log.setVisible(true);
         close();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed
+        if (sigPassText.getText().length()<8 || sigPassText.getText().length()>10){
+            JOptionPane.showMessageDialog(this, "Password Minimal 8 digit, dan maksimal 10 digit!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }else if (sigPassText1.getText().equals(sigPassText.getText())){
+            if (checkUser()){
+                try {
+                    Connection conn = (Connection)conf.configDB();
+                    String user = sigUserText.getText();
+                    String pass = sigPassText.getText();
+                    String sql = "INSERT INTO account (username, password) VALUES (?,?)";
+                    PreparedStatement p = conn.prepareStatement(sql);
+                    p.setString(1, user);
+                    p.setString(2, pass);
+                    p.executeUpdate();
+                    p.close();
+                    JOptionPane.showMessageDialog(this, "Akun Anda Telah Dibuat, Silahkan Login", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    LoginForm log = new LoginForm(user);
+                    log.setVisible(true);
+                    close();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Terjadi Masalah!!", "Warning", JOptionPane.WARNING_MESSAGE);
+                    System.out.println(e.getMessage());
+                }
+            }
+        }else {
+            JOptionPane.showMessageDialog(this, "Konfirmasi Password Tidak Sesuai!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnRegActionPerformed
+
+    private void sigPassTextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sigPassTextKeyTyped
+        char c = evt.getKeyChar();
+        if(c == ' '){
+            evt.consume();
+        }
+    }//GEN-LAST:event_sigPassTextKeyTyped
+
+    private void sigPassText1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sigPassText1KeyTyped
+        char c = evt.getKeyChar();
+        if(c == ' '){
+            evt.consume();
+        }
+    }//GEN-LAST:event_sigPassText1KeyTyped
     private void close(){
         WindowEvent closeWin = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         getToolkit().getDefaultToolkit().getSystemEventQueue().postEvent(closeWin);
+    }
+    private boolean checkUser(){
+        try {
+            Connection conn = (Connection)conf.configDB();
+            String user = sigUserText.getText();
+            String sql = "SELECT * FROM account WHERE username='"+user+"'";
+            
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            if (user.equalsIgnoreCase("admin")) {
+                JOptionPane.showMessageDialog(this, "Username Terlarang!!", "Warning", JOptionPane.WARNING_MESSAGE);
+                return false;
+            }else if (rs.next()){
+                JOptionPane.showMessageDialog(this, "Username Sudah Terdaftar!!", "Warning", JOptionPane.WARNING_MESSAGE);
+                return false;
+            }else{
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        
     }
     /**
      * @param args the command line arguments
@@ -192,7 +303,7 @@ public class RegisterForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnReg;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -200,8 +311,10 @@ public class RegisterForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField sigPassText;
+    private javax.swing.JPasswordField sigPassText1;
     private javax.swing.JTextField sigUserText;
     // End of variables declaration//GEN-END:variables
 }

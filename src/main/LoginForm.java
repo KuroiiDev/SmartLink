@@ -18,15 +18,12 @@ import javax.swing.JOptionPane;
  * @author USER
  */
 public class LoginForm extends javax.swing.JFrame {
-    final String URL = "jdbc:mysql://localhost:3306/db_datasiswa";
-    final String USER = "root";
-    final String PASS = "";
     /**
      * Creates new form LoginForm
      */
-    public LoginForm() {
-        
+    public LoginForm(String user) {
         initComponents();
+        logUserText.setText(user);
     }
 
     /**
@@ -65,12 +62,19 @@ public class LoginForm extends javax.swing.JFrame {
 
         logUserText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         logUserText.setBorder(null);
+        logUserText.setNextFocusableComponent(logPassText);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
         jLabel4.setText("Password");
 
         logPassText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         logPassText.setBorder(null);
+        logPassText.setNextFocusableComponent(logUserText);
+        logPassText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                logPassTextKeyTyped(evt);
+            }
+        });
 
         btnLog.setBackground(new java.awt.Color(0, 255, 51));
         btnLog.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
@@ -89,7 +93,6 @@ public class LoginForm extends javax.swing.JFrame {
         jButton3.setText("Tidak Terdaftar? Klik Untuk Register");
         jButton3.setBorder(null);
         jButton3.setFocusPainted(false);
-        jButton3.setOpaque(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -192,6 +195,13 @@ public class LoginForm extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_btnLogActionPerformed
+
+    private void logPassTextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_logPassTextKeyTyped
+        char c = evt.getKeyChar();
+        if(c == ' '){
+            evt.consume();
+        }
+    }//GEN-LAST:event_logPassTextKeyTyped
      private void close(){
         WindowEvent closeWin = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         getToolkit().getDefaultToolkit().getSystemEventQueue().postEvent(closeWin);
@@ -226,7 +236,7 @@ public class LoginForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginForm().setVisible(true);
+                new LoginForm("").setVisible(true);
             }
         });
     }

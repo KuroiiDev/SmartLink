@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2023 at 08:59 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.4
+-- Waktu pembuatan: 22 Nov 2023 pada 05.50
+-- Versi server: 10.4.18-MariaDB
+-- Versi PHP: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,46 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_smartlink`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `account`
+--
+
+CREATE TABLE `account` (
+  `id` int(11) NOT NULL,
+  `username` varchar(25) NOT NULL,
+  `password` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `account`
+--
+
+INSERT INTO `account` (`id`, `username`, `password`) VALUES
+(1, 'admin', 'admin'),
+(3, 'andika', 'and');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indeks untuk tabel `account`
+--
+ALTER TABLE `account`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `account`
+--
+ALTER TABLE `account`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
