@@ -197,8 +197,8 @@ public class RegisterForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed
-        if (sigPassText.getText().length()<8 || sigPassText.getText().length()>10){
-            JOptionPane.showMessageDialog(this, "Password Minimal 8 digit, dan maksimal 10 digit!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        if (sigPassText.getText().length()<5 || sigPassText.getText().length()>10){
+            JOptionPane.showMessageDialog(this, "Password Minimal 5 digit, dan maksimal 10 digit!!", "Warning", JOptionPane.WARNING_MESSAGE);
         }else if (sigPassText1.getText().equals(sigPassText.getText())){
             if (checkUser()){
                 try {

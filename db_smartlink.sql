@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2023 at 05:01 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Nov 23, 2023 at 03:48 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ CREATE TABLE `account` (
   `id` int(11) NOT NULL,
   `username` varchar(25) NOT NULL,
   `password` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `account`
@@ -39,7 +39,9 @@ CREATE TABLE `account` (
 
 INSERT INTO `account` (`id`, `username`, `password`) VALUES
 (1, 'admin', 'admin'),
-(2, 'kuroii', 'admin123');
+(2, 'kuroii', 'admin123'),
+(3, 'ligma', 'ligma'),
+(4, 'deland', '12345');
 
 -- --------------------------------------------------------
 
@@ -51,20 +53,20 @@ CREATE TABLE `computer` (
   `id` int(11) NOT NULL,
   `user` int(11) NOT NULL,
   `available` enum('y','n') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `computer`
 --
 
 INSERT INTO `computer` (`id`, `user`, `available`) VALUES
-(1, 2, 'n'),
-(2, 0, 'y'),
-(3, 0, 'y'),
-(4, 0, 'y'),
+(1, 2, 'y'),
+(2, 3, 'y'),
+(3, 3, 'y'),
+(4, 1, 'y'),
 (5, 0, 'y'),
 (6, 0, 'y'),
-(7, 0, 'y'),
+(7, 3, 'y'),
 (8, 0, 'y');
 
 -- --------------------------------------------------------
@@ -79,14 +81,18 @@ CREATE TABLE `history` (
   `client_name` varchar(25) NOT NULL,
   `com_id` int(11) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `history`
 --
 
 INSERT INTO `history` (`id`, `client_id`, `client_name`, `com_id`, `date`) VALUES
-(1, 2, 'kuroii', 1, '2023-11-22');
+(1, 2, 'kuroii', 1, '2023-11-22'),
+(2, 2, 'kuroii', 2, '2023-11-23'),
+(3, 2, 'kuroii', 3, '2023-11-23'),
+(4, 3, 'ligma', 2, '2023-11-23'),
+(7, 4, 'deland', 4, '2023-11-23');
 
 --
 -- Indexes for dumped tables
@@ -118,7 +124,7 @@ ALTER TABLE `history`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `computer`
@@ -130,7 +136,7 @@ ALTER TABLE `computer`
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
